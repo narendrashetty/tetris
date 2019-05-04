@@ -7,11 +7,7 @@ import { music } from '../../unit/music';
 const down = (store) => {
   store.dispatch(actions.keyboard.rotate(true));
   if (store.getState().get('cur') !== null) {
-    event.down({
-      key: 'rotate',
-      once: true,
-      callback: () => {
-        const state = store.getState();
+    const state = store.getState();
         if (state.get('lock')) {
           return;
         }
@@ -29,38 +25,26 @@ const down = (store) => {
         if (want(next, state.get('matrix'))) {
           store.dispatch(actions.moveBlock(next));
         }
-      },
-    });
   } else {
-    event.down({
-      key: 'rotate',
-      begin: 200,
-      interval: 100,
-      callback: () => {
-        if (store.getState().get('lock')) {
-          return;
-        }
-        if (music.move) {
-          music.move();
-        }
-        const state = store.getState();
-        const cur = state.get('cur');
-        if (cur) {
-          return;
-        }
-        let startLines = state.get('startLines');
-        startLines = startLines + 1 > 10 ? 0 : startLines + 1;
-        store.dispatch(actions.startLines(startLines));
-      },
-    });
+    if (store.getState().get('lock')) {
+      return;
+    }
+    if (music.move) {
+      music.move();
+    }
+    const state = store.getState();
+    const cur = state.get('cur');
+    if (cur) {
+      return;
+    }
+    let startLines = state.get('startLines');
+    startLines = startLines + 1 > 10 ? 0 : startLines + 1;
+    store.dispatch(actions.startLines(startLines));
   }
 };
 
 const up = (store) => {
   store.dispatch(actions.keyboard.rotate(false));
-  event.up({
-    key: 'rotate',
-  });
 };
 
 export default {

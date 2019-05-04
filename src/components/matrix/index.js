@@ -2,6 +2,8 @@ import React from 'react';
 import immutable, { List } from 'immutable';
 import classnames from 'classnames';
 import propTypes from 'prop-types';
+import { DynamicComponent } from '@twilio/frame-ui/DynamicComponent';
+import { DynamicContentStore } from '@twilio/frame-ui/DynamicContentStore';
 
 import style from './index.less';
 import { isClear } from '../../unit/';
@@ -10,7 +12,7 @@ import states from '../../control/states';
 
 const t = setTimeout;
 
-export default class Matrix extends React.Component {
+class Matrix extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -149,20 +151,29 @@ export default class Matrix extends React.Component {
       matrix = this.getResult();
     }
     return (
-      <div className={style.matrix}>{
-          matrix.map((p, k1) => (<p key={k1}>
-            {
-              p.map((e, k2) => <b
-                className={classnames({
-                  c: e === 1,
-                  d: e === 2,
-                })}
-                key={k2}
-              />)
-            }
-          </p>))
-      }
-      </div>
+      <DynamicComponent
+        name={Matrix.displayName}
+        contentStore={Matrix.Content}
+        childProps={this.props}
+        customChildren={this.props.children}
+        vertical
+      >
+
+        <div style={{flexShrink: 0}} className={style.matrix}>{
+            matrix.map((p, k1) => (<p key={k1} data-key={k1}>
+              {
+                p.map((e, k2) => <b
+                  className={classnames({
+                    c: e === 1,
+                    d: e === 2,
+                  })}
+                  key={k2}
+                />)
+              }
+            </p>))
+        }
+        </div>
+      </DynamicComponent>
     );
   }
 }
@@ -172,3 +183,8 @@ Matrix.propTypes = {
   cur: propTypes.object,
   reset: propTypes.bool.isRequired,
 };
+
+Matrix.displayName = 'Matrix';
+Matrix.Content = new DynamicContentStore(Matrix.displayName);
+
+export default Matrix;

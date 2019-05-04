@@ -7,12 +7,7 @@ import { music } from '../../unit/music';
 
 const down = (store) => {
   store.dispatch(actions.keyboard.right(true));
-  event.down({
-    key: 'right',
-    begin: 200,
-    interval: 100,
-    callback: () => {
-      const state = store.getState();
+  const state = store.getState();
       if (state.get('lock')) {
         return;
       }
@@ -44,15 +39,10 @@ const down = (store) => {
         speed = speed + 1 > 6 ? 1 : speed + 1;
         store.dispatch(actions.speedStart(speed));
       }
-    },
-  });
 };
 
 const up = (store) => {
   store.dispatch(actions.keyboard.right(false));
-  event.up({
-    key: 'right',
-  });
 };
 
 export default {

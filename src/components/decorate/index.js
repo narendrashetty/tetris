@@ -5,6 +5,7 @@ import emotionStyled from "react-emotion";
 import { i18n, lan } from '../../unit/const';
 
 const SDecorate = emotionStyled('div')`
+  width: 120px;
   h1{
     position: absolute;
     width: 100%;
@@ -39,17 +40,9 @@ const SDecorate = emotionStyled('div')`
     }
   }
   .view{
-    position: absolute;
-    right: -70px;
-    top: 20px;
-    width: 44px;
-    em {
-      display: block;
-      width: 22px;
-      height: 22px;
-      overflow: hidden;
-      float: left;
-    }
+    width: 90px;
+    margin: 0 auto;
+    padding: 0 10px;
     p {
       height: 22px;
       clear: both;
@@ -83,7 +76,7 @@ export default class Decorate extends React.Component {
         </div>
         <h1>{i18n.title[lan]}</h1>
         <div className="view">
-        <b className="c" />
+          <b className="c" />
           <div className="clear" />
           <b className="c" />
           <b className="c" />
@@ -182,3 +175,127 @@ export default class Decorate extends React.Component {
     );
   }
 }
+
+class DecorateLeft extends React.Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+  render() {
+    return (
+      <SDecorate className="decorate">
+        <div className="view">
+          <b />
+          <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+          <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+          <p />
+          <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+          <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+          <p />
+          <b className="c" />
+          <b className="c" />
+          <b className="c" />
+          <b className="c" />
+          <p />
+          <b />
+          <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+          <b className="c" />
+          <div className="clear" />
+          <b />
+          <b className="c" />
+          <p />
+          <b className="c" />
+          <b className="c" />
+          <div className="clear" />
+          <b />
+          <b className="c" />
+          <div className="clear" />
+          <b />
+          <b className="c" />
+          <p />
+          <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+        </div>
+        </SDecorate>
+    );
+  }
+}
+
+
+class DecorateRight extends React.Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+  render() {
+    return (
+      <SDecorate className="decorate">
+      <div className="view">
+      <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+          <b className="c" />
+          <div className="clear" />
+          <b />
+          <b className="c" />
+          <p />
+          <b />
+          <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+          <b className="c" />
+          <div className="clear" />
+          <b />
+          <b className="c" />
+          <p />
+          <b className="c" />
+          <b className="c" />
+          <b className="c" />
+          <b className="c" />
+          <p />
+          <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+          <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+          <p />
+          <b className="c" />
+          <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+          <div className="clear" />
+          <b className="c" />
+          <p />
+          <b />
+          <b className="c" />
+          <div className="clear" />
+          <b />
+          <b className="c" />
+          <div className="clear" />
+          <b />
+          <b className="c" />
+          <div className="clear" />
+          <b />
+          <b className="c" />
+      </div>
+      </SDecorate>
+    );
+  }
+}
+
+Decorate.Left = DecorateLeft;
+Decorate.Right = DecorateRight;
