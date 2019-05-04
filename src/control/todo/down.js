@@ -39,7 +39,7 @@ const down = (store) => {
               }
             })
           ));
-          states.nextAround(matrix, stopDownTrigger);
+          states.nextAround(matrix);
         }
   } else {
     if (store.getState().get('lock')) {

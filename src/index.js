@@ -16,7 +16,6 @@ subscribeRecord(store); // 将更新的状态记录到localStorage
 
 class NewCell extends React.PureComponent {
   render() {
-    let smiley = 'ℹ️';
     if (this.props.status === 'active') {
       return (
         <span style={{
@@ -31,7 +30,7 @@ class NewCell extends React.PureComponent {
       return (
         <span style={{
           border: '1px solid #1c1e22',
-          background: '##ffdc33',
+          background: 'red',
           width: 40,
           height: 40,
           float: 'left'
@@ -45,6 +44,31 @@ class NewCell extends React.PureComponent {
         height: 40,
         float: 'left'
       }}></span>
+    );
+  }
+}
+
+class Rules extends React.PureComponent {
+  render() {
+    return (
+      <div style={{
+        width: 450,
+        color: '#fff',
+        padding: 10,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <h1 style={{ textAlign: 'center' }}>How to play</h1>
+        <ul style={{ marginTop: 70 }}>
+          <li style={{ marginTop: 10, marginBottom: 10 }}>Call up <h1>+44 7723 452799</h1></li>
+          <li style={{ marginTop: 10, marginBottom: 10 }}>Press 2 to change</li>
+          <li style={{ marginTop: 10, marginBottom: 10 }}>Press 4 to go left</li>
+          <li style={{ marginTop: 10, marginBottom: 10 }}>Press 6 to go right</li>
+          <li style={{ marginTop: 10, marginBottom: 10 }}>Press 8 to go down</li>
+        </ul>
+      </div>
     );
   }
 }
@@ -196,6 +220,8 @@ App.Content.remove('main');
 
 App.Content.add(<Matrix key="matrix1" />);
 App.Content.add(<NewScore key="next" />);
+
+App.Content.add(<Rules key="rules" />, { sortOrder: -1 });
 
 render(
   <Provider store={store}>
