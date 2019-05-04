@@ -83,7 +83,7 @@ class Screen extends React.Component {
                 length={1}
               />
               <p>{i18n.next[lan]}</p>
-              <Next data={this.props.next} />
+              <Next next={this.props.next} />
               <Bottom>
                 <Music data={this.props.music} />
                 <Pause data={this.props.pause} />

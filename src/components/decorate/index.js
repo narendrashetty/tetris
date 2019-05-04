@@ -3,6 +3,7 @@ import cn from 'classnames';
 import emotionStyled from "react-emotion";
 
 import { i18n, lan } from '../../unit/const';
+import Cell from '../Cell';
 
 const SDecorate = emotionStyled('div')`
   width: 120px;
@@ -75,102 +76,6 @@ export default class Decorate extends React.Component {
           <span className="r ml" />
         </div>
         <h1>{i18n.title[lan]}</h1>
-        <div className="view">
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-          <b className="c" />
-          <div className="clear" />
-          <em />
-          <b className="c" />
-          <p />
-          <em />
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-          <b className="c" />
-          <div className="clear" />
-          <em />
-          <b className="c" />
-          <p />
-          <b className="c" />
-          <b className="c" />
-          <b className="c" />
-          <b className="c" />
-          <p />
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-          <p />
-          <b className="c" />
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-          <p />
-          <em />
-          <b className="c" />
-          <div className="clear" />
-          <em />
-          <b className="c" />
-          <div className="clear" />
-          <em />
-          <b className="c" />
-          <div className="clear" />
-          <em />
-          <b className="c" />
-        </div>
-        <div className="view l">
-          <em />
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-          <p />
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-          <p />
-          <b className="c" />
-          <b className="c" />
-          <b className="c" />
-          <b className="c" />
-          <p />
-          <em />
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-          <b className="c" />
-          <div className="clear" />
-          <em />
-          <b className="c" />
-          <p />
-          <b className="c" />
-          <b className="c" />
-          <div className="clear" />
-          <em />
-          <b className="c" />
-          <div className="clear" />
-          <em />
-          <b className="c" />
-          <p />
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-          <div className="clear" />
-          <b className="c" />
-        </div>
       </SDecorate> 
     );
   }
@@ -184,51 +89,51 @@ class DecorateLeft extends React.Component {
     return (
       <SDecorate className="decorate">
         <div className="view">
-          <b />
-          <b className="c" />
+          <Cell />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
-          <b className="c" />
+          <Cell status="active" />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
+          <Cell status="active" />
           <p />
-          <b className="c" />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
-          <b className="c" />
+          <Cell status="active" />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
+          <Cell status="active" />
           <p />
-          <b className="c" />
-          <b className="c" />
-          <b className="c" />
-          <b className="c" />
+          <Cell status="active" />
+          <Cell status="active" />
+          <Cell status="active" />
+          <Cell status="active" />
           <p />
-          <b />
-          <b className="c" />
+          <Cell />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
-          <b className="c" />
+          <Cell status="active" />
+          <Cell status="active" />
           <div className="clear" />
-          <b />
-          <b className="c" />
+          <Cell />
+          <Cell status="active" />
           <p />
-          <b className="c" />
-          <b className="c" />
+          <Cell status="active" />
+          <Cell status="active" />
           <div className="clear" />
-          <b />
-          <b className="c" />
+          <Cell />
+          <Cell status="active" />
           <div className="clear" />
-          <b />
-          <b className="c" />
+          <Cell />
+          <Cell status="active" />
           <p />
-          <b className="c" />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
+          <Cell status="active" />
         </div>
         </SDecorate>
     );
@@ -244,53 +149,53 @@ class DecorateRight extends React.Component {
     return (
       <SDecorate className="decorate">
       <div className="view">
-      <b className="c" />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
-          <b className="c" />
+          <Cell status="active" />
+          <Cell status="active" />
           <div className="clear" />
-          <b />
-          <b className="c" />
+          <Cell />
+          <Cell status="active" />
           <p />
-          <b />
-          <b className="c" />
+          <Cell />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
-          <b className="c" />
+          <Cell status="active" />
+          <Cell status="active" />
           <div className="clear" />
-          <b />
-          <b className="c" />
+          <Cell />
+          <Cell status="active" />
           <p />
-          <b className="c" />
-          <b className="c" />
-          <b className="c" />
-          <b className="c" />
+          <Cell status="active" />
+          <Cell status="active" />
+          <Cell status="active" />
+          <Cell status="active" />
           <p />
-          <b className="c" />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
-          <b className="c" />
+          <Cell status="active" />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
+          <Cell status="active" />
           <p />
-          <b className="c" />
-          <b className="c" />
+          <Cell status="active" />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
+          <Cell status="active" />
           <div className="clear" />
-          <b className="c" />
+          <Cell status="active" />
           <p />
-          <b />
-          <b className="c" />
+          <Cell />
+          <Cell status="active" />
           <div className="clear" />
-          <b />
-          <b className="c" />
+          <Cell />
+          <Cell status="active" />
           <div className="clear" />
-          <b />
-          <b className="c" />
+          <Cell />
+          <Cell status="active" />
           <div className="clear" />
-          <b />
-          <b className="c" />
+          <Cell />
+          <Cell status="active" />
       </div>
       </SDecorate>
     );

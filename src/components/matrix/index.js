@@ -9,6 +9,7 @@ import style from './index.less';
 import { isClear } from '../../unit/';
 import { fillLine, blankLine } from '../../unit/const';
 import states from '../../control/states';
+import Cell from '../Cell';
 
 const t = setTimeout;
 
@@ -162,11 +163,8 @@ class Matrix extends React.Component {
         <div style={{flexShrink: 0}} className={style.matrix}>{
             matrix.map((p, k1) => (<p key={k1} data-key={k1}>
               {
-                p.map((e, k2) => <b
-                  className={classnames({
-                    c: e === 1,
-                    d: e === 2,
-                  })}
+                p.map((e, k2) => <Cell
+                  status={e === 1 ? 'active' : e === 2 ? 'dead' : ''}
                   key={k2}
                 />)
               }

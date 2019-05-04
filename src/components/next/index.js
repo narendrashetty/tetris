@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 
 import style from './index.less';
 import { blockShape } from '../../unit/const';
+import Cell from '../Cell';
 
 const xy = { // 方块在下一个中的坐标
   I: [1, 0],
@@ -27,13 +28,13 @@ export default class Next extends React.Component {
     };
   }
   componentWillMount() {
-    this.build(this.props.data);
+    this.build(this.props.next);
   }
   componentWillReceiveProps(nextProps) {
-    this.build(nextProps.data);
+    this.build(nextProps.next);
   }
   shouldComponentUpdate(nextProps) {
-    return nextProps.data !== this.props.data;
+    return nextProps.next !== this.props.next;
   }
   build(type) {
     const shape = blockShape[type];
@@ -55,7 +56,7 @@ export default class Next extends React.Component {
             <div key={k1}>
               {
                 arr.map((e, k2) => (
-                  <b className={e ? 'c' : ''} key={k2} />
+                  <Cell status={e ? 'active' : ''} key={k2} />
                 ))
               }
             </div>
@@ -67,5 +68,5 @@ export default class Next extends React.Component {
 }
 
 Next.propTypes = {
-  data: propTypes.string,
+  next: propTypes.string,
 };

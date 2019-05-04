@@ -23,9 +23,7 @@ import states from '../control/states';
 import Main from './Main';
 
 const StyledApp = emotionStyled('div')`
-  padding-top: 42px;
-  box-shadow: 0 0 10px #fff inset;
-  background: #efcc19;
+  padding-top: 0px;
   height: 100%;
     b {
       display: block;
