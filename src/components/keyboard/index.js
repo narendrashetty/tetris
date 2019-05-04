@@ -1,12 +1,36 @@
 import React from 'react';
 import Immutable from 'immutable';
 import propTypes from 'prop-types';
+import openSocket from 'socket.io-client';
 
 import style from './index.less';
 import Button from './button';
 import store from '../../store';
 import todo from '../../control/todo';
 import { i18n, lan } from '../../unit/const';
+
+const socket = openSocket('https://twilio-call-v2.herokuapp.com');
+
+socket.on('move', data => {
+  console.log(data);
+  switch (data) {
+    case '2':
+      todo.rotate.down(store);
+      break;
+    case '4':
+      todo.left.down(store);
+      break;
+    case '6':
+      todo.right.down(store);
+      break;
+    case '8':
+      todo.down.down(store);
+      break;
+    default:
+      break;
+  }
+});
+socket.emit('subscribeToTimer', 1000);
 
 export default class Keyboard extends React.Component {
   componentDidMount() {

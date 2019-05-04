@@ -8,6 +8,50 @@
     <script>;(function(){var w=parseInt(window.screen.width),s=w/640,u=navigator.userAgent.toLowerCase(),m='<meta name="viewport" content="width=640,';if(/android (\d+\.\d+)/.test(u)){if(parseFloat(RegExp.$1)>2.3)m+='minimum-scale='+s+',maximum-scale='+s+',';}else{m+='user-scalable=no,';}m+='target-densitydpi=device-dpi">';document.write(m);}());</script>
     <meta charset="UTF-8">
     <title>俄罗斯方块</title>
+    <style>
+        html, body, #root{height: 100%;}
+        body{
+  background: #009688;
+  padding: 0;margin:0;
+  font: 20px/1 "HanHei SC","PingHei","PingFang SC","STHeitiSC-Light","Helvetica Neue","Helvetica","Arial",sans-serif;
+  cursor: default;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: 'liga', 'kern';
+  direction: ltr;
+  text-align: left;
+}
+
+
+  .r{
+    float: right;
+  }
+  .l{
+    float: left;
+  }
+
+  .clear{
+    clear: both;
+  }
+
+  .bg{
+    background:url('//img.alicdn.com/tps/TB1qq7kNXXXXXacXFXXXXXXXXXX-400-186.png') no-repeat;
+    overflow:hidden;
+  }
+
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
+    </style>
     <link href="./loader.css" rel="stylesheet" />
     <link href="./css.css" rel="stylesheet">
 </head>

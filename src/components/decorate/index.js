@@ -1,8 +1,65 @@
 import React from 'react';
 import cn from 'classnames';
+import emotionStyled from "react-emotion";
 
 import { i18n, lan } from '../../unit/const';
-import style from './index.less';
+
+const SDecorate = emotionStyled('div')`
+  h1{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-weight: normal;
+    top: -12px;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+  }
+  .topBorder{
+    position:absolute;
+    height:10px;
+    width:100%;
+    position:absolute;
+    top:0px;
+    left:0px;
+    overflow:hidden;
+    span{
+      display:block;
+      width:10px;
+      height:10px;
+      overflow:hidden;
+      background:#000;
+      &.mr{
+        margin-right:10px;
+      }
+      &.ml{
+        margin-left:10px;
+      }
+    }
+  }
+  .view{
+    position: absolute;
+    right: -70px;
+    top: 20px;
+    width: 44px;
+    em {
+      display: block;
+      width: 22px;
+      height: 22px;
+      overflow: hidden;
+      float: left;
+    }
+    p {
+      height: 22px;
+      clear: both;
+    }
+    &.l{
+      right: auto;
+      left: -70px;
+    }
+  }
+`;
 
 export default class Decorate extends React.Component {
   shouldComponentUpdate() {
@@ -10,22 +67,23 @@ export default class Decorate extends React.Component {
   }
   render() {
     return (
-      <div className={style.decorate}>
-        <div className={style.topBorder}>
-          <span className={cn(['l', style.mr])} style={{ width: 40 }} />
-          <span className={cn(['l', style.mr])} />
-          <span className={cn(['l', style.mr])} />
-          <span className={cn(['l', style.mr])} />
-          <span className={cn(['l', style.mr])} />
-          <span className={cn(['r', style.ml])} style={{ width: 40 }} />
-          <span className={cn(['r', style.ml])} />
-          <span className={cn(['r', style.ml])} />
-          <span className={cn(['r', style.ml])} />
-          <span className={cn(['r', style.ml])} />
+      <SDecorate className="decorate">
+        <div className="topBorder">
+        <span className="l mr" style={{ width: 40 }} />
+          <span className="l mr" />
+          <span className="l mr" />
+          <span className="l mr" />
+          <span className="l mr" />
+
+          <span className="r ml" style={{ width: 40 }} />
+          <span className="r ml" />
+          <span className="r ml" />
+          <span className="r ml" />
+          <span className="r ml" />
         </div>
         <h1>{i18n.title[lan]}</h1>
-        <div className={style.view}>
-          <b className="c" />
+        <div className="view">
+        <b className="c" />
           <div className="clear" />
           <b className="c" />
           <b className="c" />
@@ -73,7 +131,7 @@ export default class Decorate extends React.Component {
           <em />
           <b className="c" />
         </div>
-        <div className={cn([style.view, style.l])}>
+        <div className="view l">
           <em />
           <b className="c" />
           <div className="clear" />
@@ -120,7 +178,7 @@ export default class Decorate extends React.Component {
           <div className="clear" />
           <b className="c" />
         </div>
-      </div>
+      </SDecorate> 
     );
   }
 }

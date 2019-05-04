@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import propTypes from 'prop-types';
-
-import style from './index.less';
+import emotionStyled from "react-emotion";
+import { DynamicComponent } from '@twilio/frame-ui/DynamicComponent';
+import { DynamicContentStore } from '@twilio/frame-ui/DynamicContentStore';
 
 import Matrix from '../components/matrix';
 import Decorate from '../components/decorate';
@@ -20,6 +21,92 @@ import { transform, lastRecord, speeds, i18n, lan } from '../unit/const';
 import { visibilityChangeEvent, isFocus } from '../unit/';
 import states from '../control/states';
 
+const StyledApp = emotionStyled('div')`
+  padding-top: 42px;
+  box-shadow: 0 0 10px #fff inset;
+  background: #efcc19;
+  height: 100%;
+    b {
+      display: block;
+      width: 20px;
+      height: 20px;
+      padding: 2px;
+      border: 2px solid #879372;
+      margin: 0 2px 2px 0;
+      float: left;
+      &:after {
+        content: '';
+        display: block;
+        width: 12px;
+        height: 12px;
+        background: #879372;
+        overflow: hidden;
+      }
+      &.c {
+        border-color: #000;
+        &:after {
+          background: #000;
+        }
+      }
+      &.d {
+        border-color: #560000;
+        &:after {
+          background: #560000;
+        }
+      }
+  }
+`;
+
+const Container = emotionStyled('div')`
+  width: 480px;
+  padding: 45px 0 35px;
+  border: #000 solid;
+  border-width: 0 10px 10px;
+  margin: 0 auto;
+  position: relative;
+  ${props => props.drop && `
+    -webkit-transform:translateY(5px);transform:translateY(5px);
+  `}
+`;
+
+const Screen = emotionStyled('div')`
+  width: 390px;
+  height: 478px;
+  border: solid 5px;
+  border-color: #987f0f #fae36c #fae36c #987f0f;
+  margin: 0 auto;
+  position: relative;
+`;
+
+const Panel = emotionStyled('div')`
+  width: 380px;
+  height: 468px;
+  margin: 0 auto;
+  background: #9ead86;
+  padding: 8px;
+  border: 2px solid #494536;
+`;
+
+const State = emotionStyled('div')`
+  width: 108px;
+  position: absolute;
+  top: 0;
+  right: 15px;
+  p {
+    line-height: 47px;
+    height: 57px;
+    padding: 10px 0 0;
+    white-space: nowrap;
+    clear: both;
+  }
+`;
+
+const Bottom = emotionStyled('div')`
+  position: absolute;
+  width: 114px;
+  top: 426px;
+  left: 0;
+`;
 class App extends React.Component {
   constructor() {
     super();
@@ -83,46 +170,53 @@ class App extends React.Component {
     })();
 
     return (
-      <div
-        className={style.app}
-        style={size}
+      <DynamicComponent
+        name={App.displayName}
+        contentStore={App.Content}
+        childProps={this.props}
+        customChildren={this.props.children}
       >
-        <div className={classnames({ [style.rect]: true, [style.drop]: this.props.drop })}>
-          <Decorate />
-          <div className={style.screen}>
-            <div className={style.panel}>
-              <Matrix
-                matrix={this.props.matrix}
-                cur={this.props.cur}
-                reset={this.props.reset}
-              />
-              <Logo cur={!!this.props.cur} reset={this.props.reset} />
-              <div className={style.state}>
-                <Point cur={!!this.props.cur} point={this.props.points} max={this.props.max} />
-                <p>{ this.props.cur ? i18n.cleans[lan] : i18n.startLine[lan] }</p>
-                <Number number={this.props.cur ? this.props.clearLines : this.props.startLines} />
-                <p>{i18n.level[lan]}</p>
-                <Number
-                  number={this.props.cur ? this.props.speedRun : this.props.speedStart}
-                  length={1}
+        <StyledApp>
+          <Container key="container" drop={this.props.drop}>
+            <Decorate />
+            <Screen>
+              <Panel>
+                <Matrix
+                  matrix={this.props.matrix}
+                  cur={this.props.cur}
+                  reset={this.props.reset}
                 />
-                <p>{i18n.next[lan]}</p>
-                <Next data={this.props.next} />
-                <div className={style.bottom}>
-                  <Music data={this.props.music} />
-                  <Pause data={this.props.pause} />
-                  <Number time />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <Keyboard filling={filling} keyboard={this.props.keyboard} />
-        <Guide />
-      </div>
+                <Logo cur={!!this.props.cur} reset={this.props.reset} />
+                <State>
+                  <Point cur={!!this.props.cur} point={this.props.points} max={this.props.max} />
+                  <p>{ this.props.cur ? i18n.cleans[lan] : i18n.startLine[lan] }</p>
+                  <Number number={this.props.cur ? this.props.clearLines : this.props.startLines} />
+                  <p>{i18n.level[lan]}</p>
+                  <Number
+                    number={this.props.cur ? this.props.speedRun : this.props.speedStart}
+                    length={1}
+                  />
+                  <p>{i18n.next[lan]}</p>
+                  <Next data={this.props.next} />
+                  <Bottom>
+                    <Music data={this.props.music} />
+                    <Pause data={this.props.pause} />
+                    <Number time />
+                  </Bottom>
+                </State>
+              </Panel>
+            </Screen>
+          </Container>
+          <Keyboard key="keyboard" filling={filling} keyboard={this.props.keyboard} />
+          <Guide key="guide" />
+        </StyledApp>
+      </DynamicComponent>
     );
   }
 }
+
+App.displayName = 'App';
+App.Content = new DynamicContentStore(App.displayName);
 
 App.propTypes = {
   music: propTypes.bool.isRequired,
@@ -140,6 +234,7 @@ App.propTypes = {
   reset: propTypes.bool.isRequired,
   drop: propTypes.bool.isRequired,
   keyboard: propTypes.object.isRequired,
+  children: propTypes.any
 };
 
 const mapStateToProps = (state) => ({

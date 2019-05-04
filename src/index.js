@@ -9,6 +9,9 @@ import { subscribeRecord } from './unit';
 
 subscribeRecord(store); // 将更新的状态记录到localStorage
 
+App.Content.remove('keyboard');
+App.Content.add(<p key="new-key">Hello world</p>, {sortOrder: 1});
+
 render(
   <Provider store={store}>
     <App />
