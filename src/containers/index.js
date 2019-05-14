@@ -124,7 +124,7 @@ class App extends React.Component {
         childProps={this.props}
         customChildren={this.props.children}
       >
-        <StyledApp>
+        <StyledApp style={{background: this.props.bg}}>
           <Decorate.Left key="decorate-left" />
           <Main key="main" {...this.props} />
           <Decorate.Right key="decorate-right" />
@@ -137,6 +137,13 @@ class App extends React.Component {
 
 App.displayName = 'App';
 App.Content = new DynamicContentStore(App.displayName);
+App.add = (...args) => App.Content.add(...args);
+App.remove = (...args) => App.Content.remove(...args);
+App.replace = (...args) => App.Content.replace(...args);
+
+App.defaultProps = {
+  bg: '#efcc19'
+};
 
 App.propTypes = {
   music: propTypes.bool.isRequired,

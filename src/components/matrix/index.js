@@ -177,9 +177,9 @@ class Matrix extends React.Component {
 }
 
 Matrix.propTypes = {
-  matrix: propTypes.object.isRequired,
+  matrix: propTypes.object,
   cur: propTypes.object,
-  reset: propTypes.bool.isRequired,
+  reset: propTypes.bool,
 };
 
 Matrix.displayName = 'Matrix';

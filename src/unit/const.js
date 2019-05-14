@@ -43,7 +43,7 @@ const origin = {
 
 const blockType = Object.keys(blockShape);
 
-const speeds = [800, 650, 500, 370, 250, 160];
+const speeds = [800, 800, 800, 800, 800, 800];
 
 const delays = [50, 60, 70, 80, 90, 100];
 
